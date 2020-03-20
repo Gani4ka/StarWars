@@ -1,8 +1,50 @@
 import React from 'react';
-
+import { swapi } from '../../services/swapi.service';
 import './person-details.css';
 
-export const PersonDetails = (): JSX.Element => {
+// name
+// "Darth Vader"
+// height
+// "202"
+// mass
+// "136"
+// hair_color
+// "none"
+// skin_color
+// "white"
+// eye_color
+// "yellow"
+// birth_year
+// "41.9BBY"
+// gender
+
+interface PersonDetailsProps {
+  id: number;
+}
+
+interface State {
+  id: number;
+  name: string;
+  gender: string;
+  birthYear: string;
+  eyeColor: string;
+}
+
+export const PersonDetails = (prop: PersonDetailsProps): JSX.Element => {
+  const { id } = prop;
+  const [state, setState] = React.useState({});
+  React.useEffect(() => {
+    swapi
+      .getPerson(id)
+      // ???????????????????
+      .then(data =>
+        Object.entries(data).map(element => {
+          swapi.toCamelCase(element[0]);
+          return element;
+        })
+      )
+      .then(data => console.log(data));
+  }, []);
   return (
     <div className='person-details card'>
       <img

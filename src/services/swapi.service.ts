@@ -1,5 +1,6 @@
 /* eslint-disable no-return-await */
 /* eslint-disable class-methods-use-this */
+import camelCase from 'camelcase';
 
 export interface Planet {
   id: number;
@@ -46,6 +47,10 @@ class SwapiServise {
 
   async getShip(id: number): Promise<{}> {
     return await this.getResourse(`${this.BASE_URL}starships/${id}/`);
+  }
+
+  toCamelCase(value: string): string {
+    return camelCase(value);
   }
 }
 

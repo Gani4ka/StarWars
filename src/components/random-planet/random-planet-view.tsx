@@ -6,12 +6,12 @@ interface RandomPlanetViewProps extends Omit<Planet, 'rotation_period'> {
 }
 
 export const RandomPlanetView = (props: RandomPlanetViewProps): JSX.Element => {
-  const { name, population, rotationPeriod, diameter } = props;
+  const { name, population, rotationPeriod, diameter, id } = props;
   return (
     <React.Fragment>
       <img
         className='planet-image'
-        src='https://starwars-visualguide.com/assets/img/planets/5.jpg'
+        src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
         alt='smth'
       />
       <div>

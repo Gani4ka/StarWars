@@ -6,10 +6,7 @@ import PersonDetails from '../person-details';
 
 import './app.css';
 
-import { swapi } from '../../services';
-
 export const App = (): JSX.Element => {
-  swapi.getAllPeople().then(body => console.log(body));
   return (
     <div>
       <Header />
@@ -20,7 +17,7 @@ export const App = (): JSX.Element => {
           <ItemList />
         </div>
         <div className='col-md-6'>
-          <PersonDetails />
+          <PersonDetails id={4} />
         </div>
       </div>
     </div>
